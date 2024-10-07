@@ -86,7 +86,7 @@ def prep_sample(example, size=(512,512)):
 
 def _get_voc():
     dataset = PascalVOCDataset(
-        data_root='data/PascalVOC',
+        data_root='data/PascalVOC/VOCdevkit/VOC2012',
         img_dir='JPEGImages',
         ann_dir='SegmentationClass',
         split='ImageSets/Segmentation/val.txt',

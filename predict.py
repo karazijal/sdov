@@ -250,14 +250,10 @@ def main():
     # Output settings
     parser.add_argument("--no_overwrite", action="store_true", default=False)
     parser.add_argument("--save_sim", action="store_true", default=False)
-    parser.add_argument("--local", action="store_true", default=False)  # Do not save
+    parser.add_argument("--nonlocal", dest='local', action="store_false", default=True)  # Do not save
     parser.add_argument("--brk", default=None)
     parser.add_argument("--progbar", action="store_true", default=False)
     parser.add_argument("--num_workers", type=int, default=-1)
-
-    parser.add_argument("--no-cache", action="store_true", default=False)
-
-    parser.add_argument("--NOBG", action="store_true", default=False)
 
     parser.add_argument("--seed", type=int, default=43)
 
@@ -356,14 +352,14 @@ def main():
                 device=device,
                 verbose=False,
                 model_key="clip_ViT-B/16",
-                stride=args.fstride,
+                stride=None,
             )
         elif "dino" in proto_name:
             _dino_name = "dino_vitb8" if "dino_vitb8" in proto_name else "dino_vitb16"
             if "dino_vits8" in proto_name:
                 _dino_name = "dino_vits8"
             feature_extractor = ViTFeats(
-                -1, "key", device=device, verbose=False, model_key=_dino_name, stride=args.fstride
+                -1, "key", device=device, verbose=False, model_key=_dino_name, stride=None
             )
         elif "mae" in proto_name:
             feature_extractor = ViTFeats(

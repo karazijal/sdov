@@ -52,10 +52,10 @@ python gen_proto_vit.py voc outputs/voc --feature_path_prefix dino/dino_vitb8_8_
 
 python gen_proto_vit.py voc outputs/voc --feature_path_prefix clip/clip_vit-b_16_16_-2_0 clipb16_-2_cfbgv3_bpp_k32_n32_s43_off0
 
-python gen_proto_sd.py voc outputs/voc-v1 sd_k32_n32_s43_off0
+python gen_proto_sd.py voc outputs/voc sd_k32_n32_s43_off0
 
 
-python predict.py --device cuda --prots outputs/voc/{dataset}_sd_k32_n32_s43_off0_0,6:13,15+_t200_proto.pt outputs/voc-v1/{dataset}_clipb16_-2_cfbgv3_bpp_k32_n32_s43_off0_proto.pt outputs/voc/{dataset}_dino_vitb8_cfbgv3_bpp_k32_n32_s43_off0_proto.pt --local voc outputs/runs/voc
+python predict.py --prots outputs/voc/{dataset}_sd_k32_n32_s43_off0_0,6:13,15+_t200_proto.pt outputs/voc/{dataset}_clipb16_-2_cfbgv3_bpp_k32_n32_s43_off0_proto.pt outputs/voc/{dataset}_dino_vitb8_cfbgv3_bpp_k32_n32_s43_off0_proto.pt voc outputs/runs/voc
 ```
 
 The method is set up to make use of [SLURM arrays](https://slurm.schedmd.com/job_array.html). The above commands can be run using arrays to parallelize the computation. For example, assuming the slurm.bash script sets up enviroment and ends with `srun $@`, the following will parallelize the above commands:

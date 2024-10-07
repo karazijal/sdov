@@ -220,3 +220,5 @@ outputs/
 outputs/*
 output/
 outout/*
+
+CutLER/cutler_cascade_final.pth
