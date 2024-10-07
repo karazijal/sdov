@@ -215,4 +215,8 @@ dmypy.json
  */**/*.dylib*
  test/data/legacy_serialized.pt
  *~
- 
+
+outputs/
+outputs/*
+output/
+outout/*
